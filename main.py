@@ -118,15 +118,14 @@ for item in search_terms_dict:
 
 driver.quit()
 
-print(notification_message)
-# # SEND THE NOTIFICATION EMAIL
-# if notification_message != '':
-#     with smtplib.SMTP('smtp.gmail.com', port=587) as connection:
-#         connection.starttls()
-#         connection.login(user=outgoing_email, password=password)
-#         connection.sendmail(
-#             from_addr=outgoing_email,
-#             to_addrs=incoming_email,
-#             msg='Subject: There are items available at CDKeys\n\n'
-#                 f'{notification_message}'
-#         )
+# SEND THE NOTIFICATION EMAIL
+if notification_message != '':
+    with smtplib.SMTP('smtp.gmail.com', port=587) as connection:
+        connection.starttls()
+        connection.login(user=outgoing_email, password=password)
+        connection.sendmail(
+            from_addr=outgoing_email,
+            to_addrs=incoming_email,
+            msg='Subject: There are items available at CDKeys\n\n'
+                f'{notification_message}'
+        )
